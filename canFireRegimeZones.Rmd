@@ -1,0 +1,127 @@
+---
+title: "canFireRegimeZones Manual"
+subtitle: "v.`r SpaDES.core::moduleMetadata(module = 'canFireRegimeZones', path = '..')$version`"
+date: "Last updated: `r Sys.Date()`"
+output:
+  bookdown::html_document2:
+    toc: true
+    toc_float: true
+    theme: sandstone
+    number_sections: false
+    df_print: paged
+    keep_md: yes
+editor_options:
+  chunk_output_type: console
+  bibliography: citations/references_canFireRegimeZones.bib
+link-citations: true
+always_allow_html: true
+---
+
+# canFireRegimeZones Module
+
+<!-- the following are text references used in captions for LaTeX compatibility -->
+(ref:canFireRegimeZones) *canFireRegimeZones*
+
+```{r setup-canFireRegimeZones, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, eval = FALSE, results = "hold") ## change to eval = TRUE if all chunks are to be evaluated
+
+if (!require(dplyr)) {
+  install.packages("dplyr")
+  library(dplyr)
+}
+
+dir.create("figures", showWarnings = FALSE)
+
+download.file(url = "https://img.shields.io/badge/Made%20with-Markdown-1f425f.png",
+              destfile = "figures/markdownBadge.png",
+              mode = 'wb')
+```
+
+[![made-with-Markdown](figures/markdownBadge.png)](https://commonmark.org)
+
+<!-- if knitting to pdf remember to add the pandoc_args: ["--extract-media", "."] option to yml in order to get the badge images -->
+
+#### Authors:
+
+`r paste(as.character(SpaDES.core::moduleMetadata(module = "canFireRegimeZones", path = '..')$authors), sep = ', ')`
+<!-- ideally separate authors with new lines, '\n' not working -->
+
+## Module Overview
+
+### Module summary
+
+Create fire regime polygons based on Canadian Fire Regime Type (FRT) or Fire Regime Unit (FRU) [@Erni:2020].
+
+### Module inputs and parameters
+
+Describe input data required by the module and how to obtain it (e.g., directly from online sources or supplied by other modules)
+If `sourceURL` is specified, `downloadData("canFireRegimeZones", "..")` may be sufficient.
+Table \@ref(tab:moduleInputs-canFireRegimeZones) shows the full list of module inputs.
+
+```{r moduleInputs-canFireRegimeZones, echo = FALSE, eval = TRUE, message = FALSE, warning = FALSE}
+df_inputs <- SpaDES.core::moduleInputs("canFireRegimeZones", "..")
+knitr::kable(df_inputs,
+             caption = "List of (ref:canFireRegimeZones) input objects and their description.") %>%
+  kableExtra::kable_styling(latex_options = "scale_down", full_width = TRUE)
+```
+
+Provide a summary of user-visible parameters (Table \@ref(tab:moduleParams-canFireRegimeZones))
+
+
+```{r moduleParams-canFireRegimeZones, echo = FALSE, eval = TRUE, message = FALSE, warning = FALSE}
+df_params <- SpaDES.core::moduleParams("canFireRegimeZones", "..")
+knitr::kable(df_params, caption = "List of (ref:canFireRegimeZones) parameters and their description.") %>%
+  kableExtra::kable_styling(latex_options = "scale_down", full_width = TRUE)
+```
+
+### Events
+
+- `init` downloads the Fire Regime Types and Fire Regime Units polygons, and subsets these for the study area, base on `subsetType`.
+
+- `plot` produces maps of the resulting `fireRegimeTypes` and `fireRegimeUnits`.
+
+### Plotting
+
+Maps of the resulting `fireRegimeTypes` and `fireRegimeUnits`.
+
+### Module outputs
+
+Description of the module outputs (Table \@ref(tab:moduleOutputs-canFireRegimeZones)).
+
+```{r moduleOutputs-canFireRegimeZones, echo = FALSE, eval = TRUE, message = FALSE, warning = FALSE}
+df_outputs <- SpaDES.core::moduleOutputs("canFireRegimeZones", "..")
+knitr::kable(df_outputs, caption = "List of (ref:canFireRegimeZones) outputs and their description.") %>%
+  kableExtra::kable_styling(latex_options = "scale_down", full_width = TRUE)
+```
+
+### Example
+
+```{r example_intersects, echo = TRUE, eval = TRUE, message = FALSE, warning = FALSE}
+## select fire regime zones that intersect with study area
+mySimOut1 <- SpaDES.core::simInitAndSpades(
+  params = list(
+    canFireRegimeZones = list(subsetType = "intersects")
+  ),
+  modules = "canFireRegimeZones",
+  paths = list(modulePath = "..")
+)
+```
+
+```{r example_contains, echo = TRUE, eval = TRUE, message = FALSE, warning = FALSE}
+## select fire regime zones that intersect with study area
+mySimOut1 <- SpaDES.core::simInitAndSpades(
+  params = list(
+    canFireRegimeZones = list(subsetType = "contains")
+  ),
+  modules = "canFireRegimeZones",
+  paths = list(modulePath = "..")
+)
+```
+
+### Links to other modules
+
+Can be used to provide fire regime polygons to fire simulation model (e.g., `scfm`, `fireSense`).
+
+### Getting help
+
+-  <https://github.com/PredictiveEcology/canFireRegimeZones/issues>
