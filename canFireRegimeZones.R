@@ -44,7 +44,7 @@ defineModule(sim, list(
   ),
   outputObjects = bindrows(
     createsOutput("fireRegimeTypes", "sf", desc = "Fire Regime Types based on `studyArea`."),
-    createsOutput("fireRegimeUnits", "sf", desc = "Fire Regime Types based on `studyArea`.")
+    createsOutput("fireRegimeUnits", "sf", desc = "Fire Regime Units based on `studyArea`.")
   )
 ))
 
