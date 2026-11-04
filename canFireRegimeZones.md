@@ -1,7 +1,7 @@
 ---
 title: "canFireRegimeZones Manual"
 subtitle: "v.0.0.0.9000"
-date: "Last updated: 2023-02-13"
+date: "Last updated: 2026-11-04"
 output:
   bookdown::html_document2:
     toc: true
@@ -46,7 +46,7 @@ If `sourceURL` is specified, `downloadData("canFireRegimeZones", "..")` may be s
 Table \@ref(tab:moduleInputs-canFireRegimeZones) shows the full list of module inputs.
 
 <table class="table" style="margin-left: auto; margin-right: auto;">
-<caption>(\#tab:moduleInputs-canFireRegimeZones)List of (ref:canFireRegimeZones) input objects and their description.</caption>
+<caption>(\#tab:moduleInputs-canFireRegimeZones)(\#tab:moduleInputs-canFireRegimeZones)List of (ref:canFireRegimeZones) input objects and their description.</caption>
  <thead>
   <tr>
    <th style="text-align:left;"> objectName </th>
@@ -69,7 +69,7 @@ Provide a summary of user-visible parameters (Table \@ref(tab:moduleParams-canFi
 
 
 <table class="table" style="margin-left: auto; margin-right: auto;">
-<caption>(\#tab:moduleParams-canFireRegimeZones)List of (ref:canFireRegimeZones) parameters and their description.</caption>
+<caption>(\#tab:moduleParams-canFireRegimeZones)(\#tab:moduleParams-canFireRegimeZones)List of (ref:canFireRegimeZones) parameters and their description.</caption>
  <thead>
   <tr>
    <th style="text-align:left;"> paramName </th>
@@ -78,6 +78,7 @@ Provide a summary of user-visible parameters (Table \@ref(tab:moduleParams-canFi
    <th style="text-align:left;"> min </th>
    <th style="text-align:left;"> max </th>
    <th style="text-align:left;"> paramDesc </th>
+   <th style="text-align:left;"> cacheKey </th>
   </tr>
  </thead>
 <tbody>
@@ -88,6 +89,7 @@ Provide a summary of user-visible parameters (Table \@ref(tab:moduleParams-canFi
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> GIS operation to derive `fireRegimeTypes` and `fireRegimeUnits` objects based on `studyArea`. One of 'intersects' or 'contains', where 'intersect' is the spatial intersection of the fire regime zones and `studyArea`, and 'contains' includes all fire regime polygons contained within `studyArea`. </td>
+   <td style="text-align:left;"> TRUE </td>
   </tr>
   <tr>
    <td style="text-align:left;"> .plots </td>
@@ -96,6 +98,7 @@ Provide a summary of user-visible parameters (Table \@ref(tab:moduleParams-canFi
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> Used by Plots function, which can be optionally used here </td>
+   <td style="text-align:left;"> TRUE </td>
   </tr>
   <tr>
    <td style="text-align:left;"> .plotInitialTime </td>
@@ -104,6 +107,7 @@ Provide a summary of user-visible parameters (Table \@ref(tab:moduleParams-canFi
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> Describes the simulation time at which the first plot event should occur. </td>
+   <td style="text-align:left;"> TRUE </td>
   </tr>
   <tr>
    <td style="text-align:left;"> .plotInterval </td>
@@ -112,6 +116,7 @@ Provide a summary of user-visible parameters (Table \@ref(tab:moduleParams-canFi
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> Describes the simulation time interval between plot events. </td>
+   <td style="text-align:left;"> TRUE </td>
   </tr>
   <tr>
    <td style="text-align:left;"> .saveInitialTime </td>
@@ -120,6 +125,7 @@ Provide a summary of user-visible parameters (Table \@ref(tab:moduleParams-canFi
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> Describes the simulation time at which the first save event should occur. </td>
+   <td style="text-align:left;"> TRUE </td>
   </tr>
   <tr>
    <td style="text-align:left;"> .saveInterval </td>
@@ -128,6 +134,7 @@ Provide a summary of user-visible parameters (Table \@ref(tab:moduleParams-canFi
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> This describes the simulation time interval between save events. </td>
+   <td style="text-align:left;"> TRUE </td>
   </tr>
   <tr>
    <td style="text-align:left;"> .studyAreaName </td>
@@ -136,6 +143,7 @@ Provide a summary of user-visible parameters (Table \@ref(tab:moduleParams-canFi
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> Human-readable name for the study area used - e.g., a hash of the studyarea obtained using `reproducible::studyAreaName()` </td>
+   <td style="text-align:left;"> TRUE </td>
   </tr>
   <tr>
    <td style="text-align:left;"> .seed </td>
@@ -144,6 +152,7 @@ Provide a summary of user-visible parameters (Table \@ref(tab:moduleParams-canFi
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> Named list of seeds to use for each event (names). </td>
+   <td style="text-align:left;"> TRUE </td>
   </tr>
   <tr>
    <td style="text-align:left;"> .useCache </td>
@@ -152,6 +161,7 @@ Provide a summary of user-visible parameters (Table \@ref(tab:moduleParams-canFi
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> Should caching of events or module be used? </td>
+   <td style="text-align:left;"> TRUE </td>
   </tr>
 </tbody>
 </table>
@@ -171,7 +181,7 @@ Maps of the resulting `fireRegimeTypes` and `fireRegimeUnits`.
 Description of the module outputs (Table \@ref(tab:moduleOutputs-canFireRegimeZones)).
 
 <table class="table" style="margin-left: auto; margin-right: auto;">
-<caption>(\#tab:moduleOutputs-canFireRegimeZones)List of (ref:canFireRegimeZones) outputs and their description.</caption>
+<caption>(\#tab:moduleOutputs-canFireRegimeZones)(\#tab:moduleOutputs-canFireRegimeZones)List of (ref:canFireRegimeZones) outputs and their description.</caption>
  <thead>
   <tr>
    <th style="text-align:left;"> objectName </th>
@@ -188,7 +198,7 @@ Description of the module outputs (Table \@ref(tab:moduleOutputs-canFireRegimeZo
   <tr>
    <td style="text-align:left;"> fireRegimeUnits </td>
    <td style="text-align:left;"> sf </td>
-   <td style="text-align:left;"> Fire Regime Types based on `studyArea`. </td>
+   <td style="text-align:left;"> Fire Regime Units based on `studyArea`. </td>
   </tr>
 </tbody>
 </table>
@@ -196,7 +206,7 @@ Description of the module outputs (Table \@ref(tab:moduleOutputs-canFireRegimeZo
 ### Example
 
 
-```r
+``` r
 ## select fire regime zones that intersect with study area
 mySimOut1 <- SpaDES.core::simInitAndSpades(
   params = list(
@@ -210,17 +220,14 @@ mySimOut1 <- SpaDES.core::simInitAndSpades(
 ![](canFireRegimeZones_files/figure-html/example_intersects-1.png)<!-- -->
 
 ```
-## Reading layer `FRT_Canada' from data source 
-##   `/home/achubaty/Documents/GitHub/FOR-CAST/Ontario_AOU_ROF/modules/canFireRegimeZones/data/FRT_Canada.shp' 
-##   using driver `ESRI Shapefile'
+## Reading layer `FRT_Canada' from data source `/home/runner/work/canFireRegimeZones/canFireRegimeZones/data/FRT_Canada.shp' using driver `ESRI Shapefile'
 ## Simple feature collection with 16 features and 1 field
 ## Geometry type: MULTIPOLYGON
 ## Dimension:     XY
 ## Bounding box:  xmin: -2309000 ymin: 703000 xmax: 3090000 ymax: 3851250
 ## Projected CRS: Canada_Lambert_Conformal_Conic
 ## Reading layer `CanSZ_20180228_dissolve' from data source 
-##   `/home/achubaty/Documents/GitHub/FOR-CAST/Ontario_AOU_ROF/modules/canFireRegimeZones/data/CanSZ_20180228_dissolve.shp' 
-##   using driver `ESRI Shapefile'
+##   `/home/runner/work/canFireRegimeZones/canFireRegimeZones/data/CanSZ_20180228_dissolve.shp' using driver `ESRI Shapefile'
 ## Simple feature collection with 60 features and 4 fields
 ## Geometry type: MULTIPOLYGON
 ## Dimension:     XY
@@ -229,7 +236,7 @@ mySimOut1 <- SpaDES.core::simInitAndSpades(
 ```
 
 
-```r
+``` r
 ## select fire regime zones that intersect with study area
 mySimOut1 <- SpaDES.core::simInitAndSpades(
   params = list(
