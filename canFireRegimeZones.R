@@ -12,7 +12,7 @@ defineModule(sim, list(
   timeunit = "year",
   citation = list("citation.bib"),
   documentation = list("README.md", "canFireRegimeZones.Rmd"), ## same file
-  reqdPkgs = list("cowplot", "dplyr", "geodata", "ggplot2", "ggspatial", "sf", "sp",
+  reqdPkgs = list("cowplot", "dplyr", "geodata", "ggplot2", "ggspatial", "httr2", "sf", "sp",
                   "SpaDES.tools", "terra", "PredictiveEcology/SpaDES.core@development (>= 1.1.1)"),
   parameters = bindrows(
     defineParameter("subsetType", "character", "intersects", NA, NA,
